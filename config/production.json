@@ -1,0 +1,6 @@
+{
+    "port":"5000",
+    "mongoUri":"mongodb://localhost:27017/blogcms",
+    "jwtSecret":"vadim mern app",
+    "baseUrl":"http://127.0.0.1:5000"
+}
