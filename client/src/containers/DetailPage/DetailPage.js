@@ -3,6 +3,7 @@ import {useParams} from 'react-router-dom'
 import { useHttp } from '../../hooks/HttpHook'
 import parse from 'html-react-parser'
 import { Loader } from '../../components/Loader/Loader'
+import {url} from '../../config/config'
 import './DetailPage.css'
 
 export const DetailPage = () =>{
@@ -32,7 +33,7 @@ export const DetailPage = () =>{
             <div className="news-title">{news.title}</div>
             <div className="news-info">
                 <div className="news-img">
-                    <img src={'http://localhost:5000/'+news.preview} alt="preview" width='350px' height='250px'/>
+                    <img src={url+news.preview} alt="preview" width='350px' height='250px'/>
                 </div>
                 <div className="news-text">
                     {parse(`${news.text}`)}
@@ -42,7 +43,7 @@ export const DetailPage = () =>{
                 {images.map(img =>{
                     return (
                         <div className='news-images__item'>
-                            <img src={'http://localhost:5000/'+img.path} alt="img" width='250px' height='150px'/>
+                            <img src={url+img.path} alt="img" width='250px' height='150px'/>
                         </div>
                     )
                 })}
