@@ -1,0 +1,31 @@
+.add-form {
+    width: 100vh;
+    font-size: 18px;
+}
+.input-add {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+.input-add {
+    width: 40%;
+}
+.input-add input,select {
+    height: 20px;
+    outline: none;
+    border: 1px solid #3f3a20;
+    border-radius: 5px;
+}
+.editor {
+    margin-top: 20px;
+}
+.form-buttons button {
+    margin-top: 40px;
+    margin-bottom: 100px;
+    padding: 10px 30px;
+    color: #fff;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    background-color: green;
+}

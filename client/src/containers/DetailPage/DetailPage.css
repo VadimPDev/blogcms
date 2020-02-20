@@ -1,0 +1,17 @@
+.news {
+    display: flex;
+    flex-direction: column;
+}
+.news-title {
+    color: #303030;
+    font-weight: 700;
+    font-size: 25px;
+}
+.news-info {
+    display: flex;
+}
+
+.news-text {
+    margin-left: 10px;
+    max-width: 400px;
+}

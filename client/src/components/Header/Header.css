@@ -1,0 +1,19 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px 65px;
+}
+
+.header .header-title a {
+    text-decoration: none;
+    color: #303030;
+    font-size: 2.2rem;
+}
+
+.header .header-contacts {
+    display: flex;
+}
+.header .header-contacts .header-contacts__item {
+    padding: 0 2px;
+}

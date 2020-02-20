@@ -1,0 +1,29 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #e5e5e5;
+  font-family: sans-serif;
+}
+ul,li {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 1200px;
+  background-color: #fff;
+  margin:  0 auto;
+  margin-top: 20px;
+  -webkit-box-shadow: 1px 3px 17px 1px rgba(0,0,0,0.75);
+  -moz-box-shadow: 1px 3px 17px 1px rgba(0,0,0,0.75);
+  box-shadow: 1px 3px 17px 1px rgba(0,0,0,0.75);
+}
+
+
+main {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 30px;
+  padding: 0px 35px;
+}

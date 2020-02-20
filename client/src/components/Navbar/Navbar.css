@@ -1,0 +1,15 @@
+nav .navbar-items {
+    display: flex;
+    justify-content: flex-start;
+    background-color: #303030;
+}
+nav .navbar-items .navbar-items__item a {
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    font-size: 1rem;
+    padding: 20px;
+}
+nav .navbar-items .navbar-items__item a:hover {
+    background-color: #3f3f3f;
+}
