@@ -2,17 +2,20 @@ import React, { useState, useEffect, useContext } from 'react'
 import {useHttp} from '../../hooks/HttpHook'
 import {AuthContext} from '../../context/AuthContext'
 import './Auth.css'
+import { useMessage } from '../../hooks/MessageHook'
 
 export const Auth = () =>{
 
     const [form,setForm] = useState({email:'',password:''})
     const auth = useContext(AuthContext)
-    const {request} = useHttp()
+    const {request,error,clearError} = useHttp()
+    const message = useMessage()
 
     const loginHandler = async() =>{
         try{
             const data = await request('/api/auth/login','POST',{...form})
             auth.login(data.token,data.userId)
+            message(data.message)
         }catch(e){
 
         }
@@ -20,7 +23,7 @@ export const Auth = () =>{
     const registerHandler = async() =>{
         try{
             const data = await request('/api/auth/register','POST',{...form})
-            console.log(data)
+            message(data.message)
         }catch(e){
 
         }
@@ -33,8 +36,9 @@ export const Auth = () =>{
         setForm({...form,[event.target.name]:event.target.value})
     }
     useEffect(()=>{
-        console.log(form)
-    },[form])
+        message(error)
+        clearError()
+    },[error,clearError,message])
     return (
         <div className='auth-form'>
             <form onSubmit={event=>submitHandler(event)}>

@@ -14,4 +14,15 @@
 .news-text {
     margin-left: 10px;
     max-width: 400px;
+    overflow-x: hidden;
+}
+.news-images {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 850px;
+}
+
+.news-images__item {
+    margin: 10px;
+    border: 1px solid grey;
 }

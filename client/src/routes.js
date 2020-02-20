@@ -4,6 +4,7 @@ import { Auth } from './containers/Auth/Auth'
 import { Main } from './containers/Main/Main'
 import {DetailPage} from './containers/DetailPage/DetailPage'
 import {AddNews} from './containers/AddNews/AddNews'
+import { CreateCategory } from './containers/CreateCategory/CreateCategory'
 
 
 export const useRoutes = isAuthenticated =>{
@@ -15,6 +16,9 @@ export const useRoutes = isAuthenticated =>{
                 </Route>
                 <Route path='/admin/add' exact>
                     <AddNews />
+                </Route>
+                <Route path='/admin/category'>
+                    <CreateCategory />
                 </Route>
                 <Route path='/detail/:id' exact>
                     <DetailPage />

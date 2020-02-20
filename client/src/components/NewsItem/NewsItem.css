@@ -8,7 +8,7 @@
     flex-direction: column;
     justify-content: space-around;
     margin: 0px 25px;
-    max-width: 25rem;
+    max-width: 450px!important;
     font-size: 18px;
     color: #5c5c5c;
 }
@@ -17,6 +17,7 @@
 }
 .news-list__item .item-info .item-text {
     font-size: 18px;
+    overflow-x: hidden;
 }
 
 .news-list__item .item-info .item-title {

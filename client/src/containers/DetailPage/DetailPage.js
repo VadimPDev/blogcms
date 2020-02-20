@@ -10,11 +10,13 @@ export const DetailPage = () =>{
 
     const {request,loading} = useHttp()
 
-    const [news,setNews] = useState({})
+    const [news,setNews] = useState([])
+    const [images,setImages] = useState([])
 
     const getNews = useCallback(async()=>{
         const data = await request(`/api/news/get/${newsId}`,'GET')
         setNews(data)
+        setImages(data.images)
     },[request,newsId])
 
     useEffect(()=>{
@@ -37,7 +39,13 @@ export const DetailPage = () =>{
                 </div>
             </div>
             <div className="news-images">
-                {console.log(news.images)}
+                {images.map(img =>{
+                    return (
+                        <div className='news-images__item'>
+                            <img src={'http://localhost:5000/'+img.path} alt="img" width='250px' height='150px'/>
+                        </div>
+                    )
+                })}
             </div>
         </div>
     </div>

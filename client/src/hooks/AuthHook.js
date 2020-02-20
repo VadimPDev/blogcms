@@ -45,7 +45,7 @@ export const useAuth = () =>{
         if(data && data.token) {
             const auth = isTokenExpired()
             if(!auth){
-                return logout()
+                logout()
             }
             login(data.token,data.userId)
         }

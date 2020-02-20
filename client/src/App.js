@@ -27,7 +27,7 @@ function App() {
           <Navbar />
           <main>
             {routes}
-            <SideBar />
+            <SideBar auth={isAuthenticated}/>
           </main>
         </div>
       </BrowserRouter>

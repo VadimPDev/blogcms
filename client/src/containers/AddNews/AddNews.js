@@ -1,10 +1,12 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect, useCallback } from 'react'
 import {useHistory} from 'react-router-dom'
 import { Editor } from '@tinymce/tinymce-react';
 import {AuthContext} from '../../context/AuthContext'
 import {useMessage} from '../../hooks/MessageHook'
 import './AddNews.css'
 import axios from 'axios'
+import {useHttp} from '../../hooks/HttpHook'
+
 export const AddNews = () =>{
     const history = useHistory()
     const message = useMessage()
@@ -16,6 +18,8 @@ export const AddNews = () =>{
         preview:null,
         images:null,
     })
+    const [category,setCategory] = useState([])
+    const {request} = useHttp()
     const {token} = useContext(AuthContext)
 
     const createNews = async() =>{
@@ -44,9 +48,7 @@ export const AddNews = () =>{
             setTimeout(()=>{
                 history.push('/')
             },3000)
-        }catch(e){
-            console.log(e)
-        }
+        }catch(e){}
     }
     const changeHandler = (event) =>{
         setForm({...form,[event.target.name]:event.target.value})
@@ -58,6 +60,20 @@ export const AddNews = () =>{
     const fileUpload = (event) =>{
         setForm({...form,[event.target.name]:event.target.files})
     }
+
+    const loadCategory = useCallback(async() =>{
+        try{
+            const data = await request('/api/category/get','GET')
+            setCategory(data)
+        }catch(e){}
+    },[request])
+
+    
+
+    useEffect(()=>{
+        loadCategory()
+    },[loadCategory])
+
     return (
         <div className='content'>
             <form className='add-form' onSubmit={event => submitHandler(event)}>
@@ -68,10 +84,10 @@ export const AddNews = () =>{
                 <div className="input-add">
                     <span>Категория</span>
                     <select name='category' onChange={event => changeHandler(event)}>
-                        <option name='cat1'>Category 1</option>
-                        <option name='cat2'>Category 2</option>
-                        <option name='cat3'>Category 3</option>
-                        <option name='cat4'>Category 4</option>
+                        <option>Выберите категорию</option>
+                        {category.map((cat,index)=>{
+                            return <option name={cat.url} key={index}>{cat.title}</option>
+                        })}
                     </select>
                 </div>
                 <div className="editor">
