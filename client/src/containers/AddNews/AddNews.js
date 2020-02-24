@@ -4,7 +4,6 @@ import { Editor } from '@tinymce/tinymce-react';
 import {AuthContext} from '../../context/AuthContext'
 import {useMessage} from '../../hooks/MessageHook'
 import './AddNews.css'
-import axios from 'axios'
 import {useHttp} from '../../hooks/HttpHook'
 
 export const AddNews = () =>{
@@ -19,11 +18,14 @@ export const AddNews = () =>{
         images:null,
     })
     const [category,setCategory] = useState([])
-    const {request} = useHttp()
+    const {request,error,clearError} = useHttp()
     const {token} = useContext(AuthContext)
 
     const createNews = async() =>{
         try{
+            if(!form) {
+                message('error','заполните все поля')
+            }
             const img = new FormData()
             Array.from(form.images).forEach((file,i)=>{
                 img.append(i,file)
@@ -36,19 +38,24 @@ export const AddNews = () =>{
             img.append('content',form.content)
             img.append('category',form.category)
         
-            const data = await axios({
+            /*const data = await axios({
                 method:"POST",
                 url:'/api/news/add',
                 headers:{
                     Authorization:`Bearer ${token}`
                 },
                 data:img
-            })
-            message(data.data.message)
+            })*/
+            const data = await request('/api/news/add','POST',img,{
+                Authorization:`Bearer ${token}`
+            },{headers:'auto'})
+            message('success',data.message)
             setTimeout(()=>{
                 history.push('/')
             },3000)
-        }catch(e){}
+        }catch(e){
+            message('error','Заполните все поля')
+        }
     }
     const changeHandler = (event) =>{
         setForm({...form,[event.target.name]:event.target.value})
@@ -68,7 +75,10 @@ export const AddNews = () =>{
         }catch(e){}
     },[request])
 
-    
+    useEffect(()=>{
+        message('error',error)
+        clearError()
+    },[error,message,clearError])
 
     useEffect(()=>{
         loadCategory()

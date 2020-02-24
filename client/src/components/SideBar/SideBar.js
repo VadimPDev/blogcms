@@ -25,7 +25,9 @@ export const SideBar = ({auth}) =>{
             <ul className="category-items">
                 <li className="category-items__item"><Link to='/admin/add'>Создать новость</Link></li>
                 <li className="category-items__item"><Link to='/admin/category'>Создать категорию</Link></li>
+                <li className="category-items__item"><Link to='/admin/page'>Создать страницу</Link></li>
                 <li className="category-items__item"><Link to='/admin/news'>Все новости</Link></li>
+                <li className="category-items__item"><Link to='/admin/logout'>Выйти</Link></li>
             </ul>
             <div className="sidebar-title">Category</div>
             <ul className="category-items">

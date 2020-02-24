@@ -8,6 +8,7 @@ import { Navbar } from './components/Navbar/Navbar';
 import {Header} from './components/Header/Header'
 import {SideBar} from './components/SideBar/SideBar'
 import {ToastProvider} from 'react-toast-notifications'
+import {Footer} from './components/Footer/Footer'
 import './App.css'
 
 
@@ -15,6 +16,7 @@ function App() {
   const {token,userId,login,logout,ready} = useAuth()
   const isAuthenticated = !!token
   const routes = useRoutes(isAuthenticated)
+
   if(!ready){
     return <Loader />
   }
@@ -29,6 +31,7 @@ function App() {
             {routes}
             <SideBar auth={isAuthenticated}/>
           </main>
+          <Footer />
         </div>
       </BrowserRouter>
     </AuthContext.Provider>

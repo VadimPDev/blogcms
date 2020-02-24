@@ -5,6 +5,10 @@ body {
   background-color: #e5e5e5;
   font-family: sans-serif;
 }
+html, body, .container {
+  height: 100%;
+}
+
 ul,li {
   margin: 0;
   padding: 0;
@@ -20,10 +24,26 @@ ul,li {
   box-shadow: 1px 3px 17px 1px rgba(0,0,0,0.75);
 }
 
+.content {
+  width: 980px;
+}
 
 main {
   display: flex;
   justify-content: space-around;
   margin-top: 30px;
   padding: 0px 35px;
+}
+
+
+
+.footer {
+  display: flex;
+  align-items: center;
+  background-color: #303030;
+  height: 100px;
+}
+.footer-text {
+  margin-left: 40px;
+  color: #d0d0d0;
 }

@@ -6,6 +6,7 @@ const formData = require('express-form-data')
 const AuthRoutes = require('./routes/AuthRoutes')
 const NewsRoutes = require('./routes/NewsRoutes')
 const CategoryRoutes = require('./routes/CategoryRoutes')
+const PagesRoutes = require('./routes/PageRoutes')
 
 const app = express()
 
@@ -21,6 +22,7 @@ app.use('/uploads',express.static(path.join(__dirname,'uploads')))
 app.use('/api/auth',AuthRoutes)
 app.use('/api/news',NewsRoutes)
 app.use('/api/category',CategoryRoutes)
+app.use('/api/page',PagesRoutes)
 
 const PORT = config.get('port') || 5000
 

@@ -15,7 +15,7 @@ export const Auth = () =>{
         try{
             const data = await request('/api/auth/login','POST',{...form})
             auth.login(data.token,data.userId)
-            message(data.message)
+            message('success',data.message)
         }catch(e){
 
         }
@@ -36,7 +36,7 @@ export const Auth = () =>{
         setForm({...form,[event.target.name]:event.target.value})
     }
     useEffect(()=>{
-        message(error)
+        message('error',error)
         clearError()
     },[error,clearError,message])
     return (

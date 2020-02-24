@@ -40,9 +40,9 @@ export const DetailPage = () =>{
                 </div>
             </div>
             <div className="news-images">
-                {images.map(img =>{
+                {images.map((img,index) =>{
                     return (
-                        <div className='news-images__item'>
+                        <div className='news-images__item' key={index}>
                             <img src={url+img.path} alt="img" width='250px' height='150px'/>
                         </div>
                     )

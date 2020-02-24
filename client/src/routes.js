@@ -5,6 +5,9 @@ import { Main } from './containers/Main/Main'
 import {DetailPage} from './containers/DetailPage/DetailPage'
 import {AddNews} from './containers/AddNews/AddNews'
 import { CreateCategory } from './containers/CreateCategory/CreateCategory'
+import { Category } from './containers/Category/Category'
+import {CreatePage} from './containers/CreatePage/CreatePage'
+import { Page } from './containers/Page/Page'
 
 
 export const useRoutes = isAuthenticated =>{
@@ -23,6 +26,15 @@ export const useRoutes = isAuthenticated =>{
                 <Route path='/detail/:id' exact>
                     <DetailPage />
                 </Route>
+                <Route path='/admin/page'>
+                    <CreatePage />
+                </Route>
+                <Route path='/category/:url' exact>
+                    <Category />
+                </Route>
+                <Route path='/page/:url' exact>
+                    <Page />
+                </Route>
                 <Redirect to='/' />
             </Switch>
         )
@@ -37,6 +49,12 @@ export const useRoutes = isAuthenticated =>{
                 </Route>
                 <Route path='/detail/:id' exact>
                     <DetailPage />
+                </Route>
+                <Route path='/category/:url' exact>
+                    <Category />
+                </Route>
+                <Route path='/page/:url' exact>
+                    <Page />
                 </Route>
                 <Redirect to='/' />
             </Switch>

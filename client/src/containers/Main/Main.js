@@ -14,9 +14,11 @@ export const Main = () =>{
             setNews(data)
         }catch(e){}
     },[request])
+
     useEffect(()=>{
         loadNews()
     },[loadNews])
+    
     if(loading){
         return <Loader />
     }
